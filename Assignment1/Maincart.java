@@ -19,6 +19,7 @@ public class Maincart extends Shoppingcart {
 		cart.displayQty(i1);
 		cart.updateQty(i1, 3);
 		cart.deleteItem(i1);
+		cart.displayBill();
 
 	}
 
