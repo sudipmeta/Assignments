@@ -2,7 +2,6 @@ package Assignment2;
 import java.util.*;
 public class HexCalc {
 	private int deciNum1 = 0, deciNum2 = 0;
-	private int base;
 	public static HashMap<Character, Integer> value = new HashMap<Character,Integer>();
     public void initValue(){
     	value.put('0', 0);
@@ -24,7 +23,6 @@ public class HexCalc {
     }
 	
 	HexCalc(String n1,String n2, int base){
-		this.base= base;
 		this.initValue();
 		this.deciNum1 = toDecimal(n1, base);
 		this.deciNum2 = toDecimal(n2, base);
