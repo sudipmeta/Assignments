@@ -1,9 +1,8 @@
 package Assignment2;
 import java.util.*;
 public class HexCalc {
-	private String n1,n2;
 	private int deciNum1 = 0, deciNum2 = 0;
-	private static int base=16;
+	private int base;
 	public static HashMap<Character, Integer> value = new HashMap<Character,Integer>();
     public void initValue(){
     	value.put('0', 0);
@@ -24,16 +23,15 @@ public class HexCalc {
     	value.put('F', 15);
     }
 	
-	HexCalc(String n1,String n2){
-		this.n1=n1;
-		this.n2=n2;
+	HexCalc(String n1,String n2, int base){
+		this.base= base;
 		this.initValue();
-		this.deciNum1 = toDecimal(n1);
-		this.deciNum2 = toDecimal(n2);
+		this.deciNum1 = toDecimal(n1, base);
+		this.deciNum2 = toDecimal(n2, base);
 		System.out.println("Decimal Values: "+deciNum1+" , "+deciNum2);
 		
 	}
-	public static int toDecimal(String s){
+	public static int toDecimal(String s, int base){
 		int num = 0,i,len=s.length();
 		for(i=0;i<len;i++){
 			num+=value.get(s.charAt(i))* Math.pow(base, len-i-1);
@@ -43,12 +41,6 @@ public class HexCalc {
 
 	private static String toHex(int n){
 		return Integer.toHexString(n);
-	}
-	private static String toHex(double n){
-		return Double.toHexString(n);
-	}
-	private static String toHex(long n){
-		return Long.toHexString(n);
 	}
 	private String addNum(){
 		int temp = deciNum1+deciNum2;
@@ -94,16 +86,19 @@ public class HexCalc {
 	public static void main(String[] args) {		
 		Scanner input = new Scanner(System.in);
 		String a,b;
+		int base;
 		System.out.println("Enter two number: ");
 		a=input.nextLine();
 		b=input.nextLine();
+		System.out.println("Enter base");
+		base = input.nextInt();
 		input.close();
-		HexCalc obj = new HexCalc(a,b);
+		HexCalc obj = new HexCalc(a,b,base);
 		System.out.println("\nSum is: "+obj.addNum());
 		System.out.println("Subtraction is: "+obj.subNum());
 		System.out.println("Multiply is: "+obj.mulNum());
 		System.out.println("Division is: "+obj.divNum());
-		System.out.println("\nNumber 1 == Number 2: "+obj.checkEquals());
+		System.out.println("\nNumbera 1 == Number 2: "+obj.checkEquals());
 		System.out.println("Number 1 > Number 2: "+obj.checkGreater());
 		System.out.println("Number 1 < Number 2: "+obj.checkSmaller());	
 	}
