@@ -2,6 +2,7 @@ package Assignment2;
 import java.util.*;
 public class HexCalc {
 	private int deciNum1 = 0, deciNum2 = 0;
+	int base = 16;
 	public static HashMap<Character, Integer> value = new HashMap<Character,Integer>();
     public void initValue(){
     	value.put('0', 0);
@@ -22,10 +23,9 @@ public class HexCalc {
     	value.put('F', 15);
     }
 	
-	HexCalc(String n1,String n2, int base){
+	HexCalc( int base){
 		this.initValue();
-		this.deciNum1 = toDecimal(n1, base);
-		this.deciNum2 = toDecimal(n2, base);
+
 		System.out.println("Decimal Values: "+deciNum1+" , "+deciNum2);
 		
 	}
@@ -40,40 +40,61 @@ public class HexCalc {
 	private static String toHex(int n){
 		return Integer.toHexString(n);
 	}
-	private String addNum(){
+	private String addNum(String n1, String n2){
+		this.deciNum1 = toDecimal(n1, base);
+		this.deciNum2 = toDecimal(n2, base);
+		System.out.println("Decimal Values: "+deciNum1+" , "+deciNum2);
 		int temp = deciNum1+deciNum2;
 		return (HexCalc.toHex(temp)+ " // decimal value " + temp);
 	}
 	
-	private String subNum(){
+	private String subNum(String n1, String n2){
+		this.deciNum1 = toDecimal(n1, base);
+		this.deciNum2 = toDecimal(n2, base);
+		System.out.println("Decimal Values: "+deciNum1+" , "+deciNum2);
 		int temp = deciNum1-deciNum2;
 		return (HexCalc.toHex(temp)+ " // decimal value " + temp);
 	}
 	
-	private String mulNum(){
+	private String mulNum(String n1, String n2){
+		this.deciNum1 = toDecimal(n1, base);
+		this.deciNum2 = toDecimal(n2, base);
+		System.out.println("Decimal Values: "+deciNum1+" , "+deciNum2);
 		int temp = deciNum1*deciNum2;
 		return (HexCalc.toHex(temp)+ " // decimal value " + temp);
 	}
 	
-	private String divNum(){
+	private String divNum(String n1, String n2){
+		this.deciNum1 = toDecimal(n1, base);
+		this.deciNum2 = toDecimal(n2, base);
+		System.out.println("Decimal Values: "+deciNum1+" , "+deciNum2);
 			int temp = deciNum1/deciNum2;
 			return (HexCalc.toHex(temp)+ " // decimal value " + temp);
 	}
-	private boolean checkEquals(){
+	private boolean checkEquals(String n1, String n2){
+		this.deciNum1 = toDecimal(n1, base);
+		this.deciNum2 = toDecimal(n2, base);
+		System.out.println("Decimal Values: "+deciNum1+" , "+deciNum2);
 		if(deciNum1==deciNum2){
 			return true;
 		}else{
 			return false;
 		}	
 	}
-	private boolean checkGreater(){
+	private boolean checkGreater(String n1, String n2){
+		this.deciNum1 = toDecimal(n1, base);
+		this.deciNum2 = toDecimal(n2, base);
+		System.out.println("Decimal Values: "+deciNum1+" , "+deciNum2);
 		if(deciNum1>deciNum2){
 			return true;
 		}else{
 			return false;
 		}
 	}
-	private boolean checkSmaller(){
+	private boolean checkSmaller(String n1, String n2){
+		this.deciNum1 = toDecimal(n1, base);
+		this.deciNum2 = toDecimal(n2, base);
+		System.out.println("Decimal Values: "+deciNum1+" , "+deciNum2);
 		if(deciNum1<deciNum2){
 			return true;
 		}else{
@@ -91,13 +112,13 @@ public class HexCalc {
 		System.out.println("Enter base");
 		base = input.nextInt();
 		input.close();
-		HexCalc obj = new HexCalc(a,b,base);
-		System.out.println("\nSum is: "+obj.addNum());
-		System.out.println("Subtraction is: "+obj.subNum());
-		System.out.println("Multiply is: "+obj.mulNum());
-		System.out.println("Division is: "+obj.divNum());
-		System.out.println("\nNumbera 1 == Number 2: "+obj.checkEquals());
-		System.out.println("Number 1 > Number 2: "+obj.checkGreater());
-		System.out.println("Number 1 < Number 2: "+obj.checkSmaller());	
+		HexCalc obj = new HexCalc(base);
+		System.out.println("\nSum is: "+obj.addNum(a,b));
+		System.out.println("Subtraction is: "+obj.subNum(a,b));
+		System.out.println("Multiply is: "+obj.mulNum(a,b));
+		System.out.println("Division is: "+obj.divNum(a,b));
+		System.out.println("\nNumbera 1 == Number 2: "+obj.checkEquals(a,b));
+		System.out.println("Number 1 > Number 2: "+obj.checkGreater(a,b));
+		System.out.println("Number 1 < Number 2: "+obj.checkSmaller(a,b));	
 	}
 }
