@@ -10,22 +10,19 @@ class SearchTest {
 	public void linearSeacrhTest() {
 		int[] arr = { 5, 2, 3, 1, 4 };
 		int left = 0;
-		int right = arr.length-1;
-		int index = Search.linearSearch(arr, left,right, 4);
+		int index = Search.linearSearch(arr,4,left);
 		assertEquals(4, index);
-		index = Search.linearSearch(arr, left,right, 50);
-		assertEquals(-1, index);
+
 	}
 
 	@Test
 	public void binarySeacrhTest() {
-		int[] arr = { 5, 2, 3, 1, 4 };
+		int[] arr = {1,2,3,4,5,6 };
 		int left = 0;
-		int right = arr.length-1;
-		int index = Search.binarySearch(arr,left, right, 4);
-		assertEquals(4, index);
-		index = Search.binarySearch(arr, left,right, 50);
-		assertEquals(-1, index);
+		int right = arr.length;
+		int index = Search.binarySearch(arr,4,left, right);
+		assertEquals(3, index);
+
 	}
 
 }

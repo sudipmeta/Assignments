@@ -1,50 +1,35 @@
 package recursion;
 
-public class Search {
-	public static int linearSearch(int[] arr, int left, int right,int ele) {
+public class Search{
+    static int linearSearch(int[] arr, int value, int i) {
+        if(i >= arr.length)
+            return -1;
+        else if(arr[i] == value)
+            return i;
+            
+        return linearSearch(arr,value,++i);
+    }
 
-		if (right < left) 
-			return -1;
-
-		if (arr[left] == ele) 
-			return left;
-
-		if (arr[right] == ele) 
-			return right;
-
-		return linearSearch(arr, left + 1, right - 1, ele);
-		
-	}
-
-	public static int binarySearch(int[] arr, int left, int right,int ele) {
-		
-		if (right >= left) {
-			int mid = left + (right - left) / 2;
-
-
-			if (arr[mid] == ele)
-				return mid;
-
-			
-			if (arr[mid] > ele)
-				return binarySearch(arr, left, mid - 1, ele);
-
-			return binarySearch(arr, mid + 1, right, ele);
-		}
-
-		return -1;
-	}
-	
-	public static void main(String args[]) {
-		int[] arr = { 13, 7, 6, 45, 21, 9, 101, 102 };
-		int left = 0;
-		int right = arr.length-1;
-		int ele = 101;
-		System.out.println(linearSearch(arr,left,right,ele));
-		System.out.println(binarySearch(arr,left,right,ele));
-	}
-
-
-
-
+    static int binarySearch(int[] arr, int value, int low, int high) {        
+        int mid = (low + high)/2;
+        if(arr[mid] == value) 
+            return mid;
+        if(value < arr[mid]) {
+            return binarySearch(arr, value, low, mid);
+        } 
+        else if(value > arr[mid]) {
+            return binarySearch(arr, value, mid+1, high);
+        } 
+                
+        return mid;
+    }
+    
+    public static void main(String[] args) {
+        int arr[] = {0,4,8,3,1,0,7,9};
+        int arr1[] = {0,1,2,5,6,7,8,9};
+        
+        System.out.println(linearSearch(arr,7,0));
+        System.out.println(binarySearch(arr1,7,0,arr1.length));
+    }
+    
 }
