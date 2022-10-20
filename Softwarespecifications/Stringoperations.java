@@ -16,11 +16,11 @@ public class Stringoperations {
 		System.out.println(str);
 	}
 
-	/*Comparing two strings
+	/**Comparing two strings
 	 * @param s1 is first string
 	 * @param s2 is second string
 	 * @return 1 for equal and 0 for not equal
-	 */
+	 **/
 	private static int strCompare(Stringoperations s1, Stringoperations s2) {
 		int flag = 1;
 		if (s1.str.length() != s2.str.length()) {
@@ -47,9 +47,9 @@ public class Stringoperations {
 		str = s;	
 		displayString();
 	}
-	/*change case of a string
+	/**change case of a string
 	 * @param str is operating string to change case
-	 */
+	 **/
 	private void changeCase(String str) {
 		System.out.println("\nAfter changing case: ");
 		String s = "";
@@ -67,9 +67,9 @@ public class Stringoperations {
 	}
 
 	// 
-	/*send large word from a string
+	/**send large word from a string
 	 * @return largest word from string
-	 */
+	 **/
 	private String largeWord() {
 		int index = 0, maxLength = 0, count = 1, i = 0;
 		String maxWord = "";

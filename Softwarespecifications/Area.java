@@ -6,7 +6,7 @@ public class Area {
 
 	double area;
 
-	/*
+	/**
 	 * Area of Triangle
 	 * 
 	 * @param width, width of Triangle
@@ -14,7 +14,7 @@ public class Area {
 	 * @param height, height of Triangle
 	 * 
 	 * @return area, calculated area of Triangle
-	 */
+	 **/
 	private double areaTriangle(double width, double height) {
 		try {
 			area = 0.5 * width * height;
@@ -25,7 +25,7 @@ public class Area {
 		return area;
 	}
 
-	/*
+	/**
 	 * Area of Rectangle
 	 * 
 	 * @param width, width of Rectangle
@@ -33,7 +33,7 @@ public class Area {
 	 * @param height, height of Rectangle
 	 * 
 	 * @return area, calculated area of Rectangle
-	 */
+	 **/
 	private double areaRectangle(double width, double height) {
 		try {
 			area = width * height;
@@ -43,7 +43,7 @@ public class Area {
 		return area;
 	}
 
-	/*
+	/**
 	 * Area of Square
 	 * 
 	 * @param width, width of Square
@@ -51,7 +51,7 @@ public class Area {
 	 * @param height, height of Square
 	 * 
 	 * @return area, calculated area of Square
-	 */
+	 **/
 	private double areaSquare(double width) {
 		try {
 			area = width * width;
@@ -61,7 +61,7 @@ public class Area {
 		return area;
 	}
 
-	/*
+	/**
 	 * Area of Circle
 	 * 
 	 * @param width, width of Circle
@@ -69,7 +69,7 @@ public class Area {
 	 * @param height, height of Circle
 	 * 
 	 * @return area, calculated area of Circle
-	 */
+	 **/
 	private double areaCircle(double radius) {
 		try {
 			area = Math.PI * radius * radius;

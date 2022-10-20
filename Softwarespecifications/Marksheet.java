@@ -16,13 +16,13 @@ public class Marksheet {
 			grades[i] = in.nextFloat();
 		}
 	}
-	/*Displaying report of students
+	/**Displaying report of students
 	 * Calculating :
 	 * - average grade
 	 * - max grade
 	 * - min grade
 	 * - result (pass/fail)
-	 */
+	 **/
 
 	private void displayReport() {
 		float avgMarks = 0, totalMarks = 0, maxMarks = 0, minMarks = 999;
