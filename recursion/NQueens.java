@@ -45,7 +45,7 @@ public class NQueens{
             }
             //lower right
             for(int c=col; c<board.length && j<board.length; c++, j++) {
-                if(board[j][c] == 'Q') {
+                if(board[j][c] == 1) {
                     return false;
                 }
             }
