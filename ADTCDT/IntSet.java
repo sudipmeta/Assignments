@@ -1,95 +1,128 @@
 package adtcdt;
 import java.util.*;
 
-
 final class IntSet {
-	Set<Integer> set = new HashSet<Integer>();  
+	private int size;
 	Scanner input = new Scanner(System.in);
-
-	private IntSet(int n){
-		System.out.println("Enter elements of set: ");
-		for(int i=0; i<n ;i++){
-			set.add(input.nextInt());
+	private int []set;
+	private IntSet(int id){
+		int []arr;
+		System.out.println("Enter number of value to insert in set "+id+": ");
+		int n=input.nextInt();
+		arr=new int[n];
+		System.out.println("Enter "+n+" values:\n");
+		for(int i=0;i<n;i++){
+			arr[i]=input.nextInt();
 		}
+		arrToSet(arr, arr.length);
+	}
+	//array to set
+	private void arrToSet(int []arr,int n){
+		//array to set
+		int j=0;
+		Arrays.sort(arr);
+		set=new int[n];
+		for(int i=0;i<n-1;i++){
+			if(arr[i]!=arr[i+1]){
+				set[j++]=arr[i];
+			}
+		}
+		set[j++]=arr[n-1];
+		size=j;
+	}	
+	//display set
+	private void showSet(){
+		System.out.println("\nSet values:");
+		for(int i=0;i<size;i++){
+			System.out.print(set[i]+" ");
+		}
+		System.out.println("\n");
+	}
+	//check is member or not
+	private boolean isMember(int val){
+		boolean flag=false;
+		for(int i=0;i<size;i++){
+			if(val==set[i]){
+				flag=true;
+			}
+		}
+		return flag;
 	}
 	
-	private void getDisplay(){
-		System.out.println("Elements of set: " + set);
+	//union
+	private void union(IntSet s1, IntSet s2){
+		int []arr=new int[s1.size+s2.size];
+		int len=s1.size+s2.size;
+		for(int i=0;i<s1.size;i++){
+			arr[i]=s1.set[i];
+		}
+		for(int i=0;i<s2.size;i++){
+			arr[i+s1.size]=s2.set[i];
+		}
+		arrToSet(arr, s1.size+s2.size);
+
+		System.out.println("\nUnion of sets: ");
 	}
+	//is sub array or not
+	private static boolean isSubArray(int A[], int B[],int n, int m){
+		int i = 0, j = 0; 
+		while (i < n && j < m){
+			if (A[i] == B[j]){
+			i++; 
+			j++;
+			if (j == m) 
+				return true; 
+			}
+			else{ 
+				i = i - j + 1; 
+				j = 0; 
+			} 
+		} 
+		return false; 
+	}
+	
+	//get compliment
+	private void getComplement(){
+		int []arr=new int[100];
+		int j=0,flag=0,k;
+		for(int i=0;i<100;i++){
+			flag=0;
+			for(k=0;k<set.length;k++){
+				if(i==set[k]){
+					flag=1;
+				}
+			}
+			if(flag==0){
+				arr[j++]=i;
+			}
+		}
+		System.out.println("\nCompliment of set-3 (U=1-10):");
+		for(int i=0;i<j;i++){
+			System.out.print(arr[i]+", ");
+		}
 		
-	// isMember
-	private boolean isMember(int x){
-		if(set.contains(x)){
-			return true;
-		}
-		else{
-			return false;
-		}
 	}
-	//size of set
-	private int size(){
-		return set.size();
-	}
-	
-	//isSubset
-	private boolean isSubSet(IntSet s){
-		for( int ele : s.set){
-			if(!set.contains(ele)){
-				return false;
-			}
-		}
-		return true;
-	}
-	
-	private HashSet<Integer> getComplement(){
-		HashSet<Integer> complementSet = new HashSet<Integer>();
-		for(int i=1; i<1000 ; i++){
-			if(!isMember(i)){
-				complementSet.add(i);
-			}
-		}
-		return complementSet;
-	}
-	
-	// union of two sets
-	private Set<Integer> getUnion(IntSet s){
-		Set<Integer> unionSet = new HashSet<Integer>();
-		unionSet.addAll(set);
-		unionSet.addAll(s.set);
-		return unionSet;
-	}
-
-	
 	public static void main(String[] args) {
+		
 		Scanner input = new Scanner(System.in);
-	
-		// first set
-		System.out.print("Enter number of elements for set 1");
-		int n = input.nextInt();
-		IntSet set1 = new IntSet(n);
+		IntSet s1 = new IntSet(1);
+		s1.showSet();
+		IntSet s2 = new IntSet(2);
+		s2.showSet();
 		
-		// second set
-		System.out.print("Enter number of elements for set2");
-		n = input.nextInt();
-		IntSet set2 = new IntSet(n);
-		input.close();
-		
-		set1.getDisplay();
-		set2.getDisplay();
-		set1.size();
-		set2.size();
+		//union
+		IntSet s3 = new IntSet(3);
+		s3.union(s1, s2);
+		s3.showSet();
+		//to check is member or not
+		System.out.println("\nEnter value to check is member or not: ");
+		System.out.println("Is Member: "+s3.isMember(input.nextInt()));
+		//to check is sub array or not
+		System.out.println("\nSet-1 is sub set of Set-3: "+IntSet.isSubArray(s3.set,s1.set,s3.size,s1.size));
+		//complement of set-3
+		s3.getComplement();
 
-
-		System.out.println("Result: "+set1.isMember(9));
-		System.out.print("Check if second set is subset of first: ");
-		System.out.println("Result: "+set1.isSubSet(set2));
-		System.out.print("complement of a set1 to universal set ");
-		System.out.println("Result: "+ set1.getComplement());
-		System.out.print("complement of a set2 to universal set ");
-		System.out.println("Result: "+ set2.getComplement());
-		System.out.print("Get union of two sets ");
-		System.out.println("Result: "+ set1.getUnion(set2));
-		
 	}
+	
 
 }
