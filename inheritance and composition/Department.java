@@ -7,10 +7,13 @@ public class Department extends Employee{
 	private double compensation;
 	public List<Employee> emp = new ArrayList();
 	
+
+	public Department() {}
+	
 	Department(double salary, double bon, double comp) {
 		basicSalary = salary;
 		bonus = bon;
-		compensation = comp;
+		compensation = comp; 
 	}
 	
 	public double getBasicSalary() {

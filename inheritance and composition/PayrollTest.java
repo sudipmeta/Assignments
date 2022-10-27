@@ -1,22 +1,27 @@
+import static org.junit.jupiter.api.Assertions.*;
 
-class PayrollTest extends Payroll {
-	public static void main(String[] args) {
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+
+class PayrollTest {
+
+	@Test
+	void payrollTest() {
 		Organisation org = new Organisation();
-		Employee e1 = new Department(2,2,2);
-		Employee e2 = new Department(3,3,3);
-		Department dev = new Department(2,2,2);
-		dev.join(e1);
-		dev.join(e2);
-		dev.relieve(e2);
-		Employee e3 = new Department(4,4,4);
-		Department hr = new Department(1,1,1);
-		hr.join(e3);
-		Employee e4 = new Department(7,7,7);
-		Department qa = new Department(1,1,1);
-		qa.join(e4);
-		org.addDepartment(dev);
-		org.addDepartment(hr);
-		org.addDepartment(qa);
-		printSalarySlip(org);
+		Department dev = new Department();
+		Employee e1 = new Department(1200000 , 50000, 1000);
+		List<Employee> l = new ArrayList<Employee>();
+		l.add(e1);
+		assertEquals(true,dev.join(e1));
+		assertEquals(true,org.addDepartment(dev));
+		assertEquals((double)1200000,e1.getBasicSalary());
+		assertEquals((double)50000,e1.getBonus());		
+		assertEquals((double)1000,e1.getCompensation());
+		assertEquals(l,org.getAllEmployees());
+		assertEquals(true,dev.relieve(e1));
+		l.remove(e1);
 	}
+
 }
