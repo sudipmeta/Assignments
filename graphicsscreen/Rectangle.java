@@ -1,41 +1,43 @@
-public class Square implements Shape{
+public class Rectangle implements Shape{
 
 	private int x;
 	private int y;
+	private int length;
 	private int width;
 	private int id;
-	ShapeType type = ShapeType.Square;
+	ShapeType type = ShapeType.Rectangle;
 	
-	public Square(int x, int y, int w, int id) {
+	public Rectangle(int x, int y, int l, int w, int id) {
 		this.x = x;
 		this.y = y;
+		this.length = l;
 		this.width = w;
 		this.id = id;
 	}
 	
 	/**
-	 * For calculating the area of Square.
-	 * @return area of Square.
+	 * For calculating the area of Rectangle.
+	 * @return area of Rectangle.
 	 */
 	@Override
 	public double getArea() {
-		double area = width * width;
+		double area = length * width;
 		return area;
 	}
 
 	/**
-	 * For calculating the perimeter of Square.
-	 * @return perimeter of Square.
+	 * For calculating the perimeter of Rectangle.
+	 * @return perimeter of Rectangle.
 	 */
 	@Override
 	public double getPerimeter() {
-		double pm = 4 * width;
+		double pm = 2 * (length + width);
 		return pm;
 	}
 
 	/**
-	 * For returning the origin of Square.
-	 * @return origin of Square.
+	 * For returning the origin of Rectangle.
+	 * @return origin of Rectangle.
 	 */
 	@Override
 	public String getOrigin() {
@@ -50,19 +52,19 @@ public class Square implements Shape{
 	 */
 	@Override
 	public boolean isPointEnclosed(Point pt) {
-		if(pt.getX() < (x + width) && pt.getX() > x && pt.getY() < (y + width)  && pt.getY() > y)
+		if(pt.getX() < (x + length) && pt.getX() > x && pt.getY() < (y + width)  && pt.getY() > y)
 			return true;
 		return false;
 	}
 	
 	/**
-	 * For returning the id of Square.
-	 * @return id of Square.
+	 * For returning the id of Rectangle.
+	 * @return id of Rectangle.
 	 */
 	public int getID() {
 		return id;
 	}
-
+	
 	/**
 	 * For returning the type of shape.
 	 * @return type of shape.
@@ -71,5 +73,4 @@ public class Square implements Shape{
 	public ShapeType getType() {
 		return type;
 	}
-
 }

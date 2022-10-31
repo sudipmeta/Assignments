@@ -1,41 +1,47 @@
-public class Square implements Shape{
+public class Triangle implements Shape{
 
 	private int x;
 	private int y;
-	private int width;
+	private int length1;
+	private int length2;
+	private int length3;
 	private int id;
-	ShapeType type = ShapeType.Square;
+	ShapeType type = ShapeType.Triangle;
 	
-	public Square(int x, int y, int w, int id) {
+	public Triangle(int x, int y, int l1, int l2, int l3, int id) {
 		this.x = x;
 		this.y = y;
-		this.width = w;
+		this.length1 = l1;
+		this.length2 = l2;
+		this.length3 = l3;
 		this.id = id;
 	}
 	
 	/**
-	 * For calculating the area of Square.
-	 * @return area of Square.
+	 * For calculating the area of Triangle.
+	 * @return area of Triangle.
 	 */
 	@Override
 	public double getArea() {
-		double area = width * width;
+		double s = getPerimeter()/2;
+		double temp = s * (s - length1) * (s - length2) * (s - length2);
+		double area = Math.sqrt(temp);
 		return area;
 	}
 
 	/**
-	 * For calculating the perimeter of Square.
-	 * @return perimeter of Square.
+	 * For calculating the perimeter of Triangle.
+	 * @return perimeter of Triangle.
 	 */
 	@Override
 	public double getPerimeter() {
-		double pm = 4 * width;
+		double pm = length1 + length2 + length3;
 		return pm;
 	}
 
 	/**
-	 * For returning the origin of Square.
-	 * @return origin of Square.
+	 * For returning the origin of Triangle.
+	 * @return origin of Triangle.
 	 */
 	@Override
 	public String getOrigin() {
@@ -50,19 +56,20 @@ public class Square implements Shape{
 	 */
 	@Override
 	public boolean isPointEnclosed(Point pt) {
-		if(pt.getX() < (x + width) && pt.getX() > x && pt.getY() < (y + width)  && pt.getY() > y)
+		if(pt.getX() > this.x && pt.getY() > this.y && pt.getX() < this.x + length1) {
 			return true;
+		}
 		return false;
 	}
 	
 	/**
-	 * For returning the id of Square.
-	 * @return id of Square.
+	 * For returning the id of Triangle.
+	 * @return id of Triangle.
 	 */
 	public int getID() {
 		return id;
 	}
-
+	
 	/**
 	 * For returning the type of shape.
 	 * @return type of shape.
@@ -71,5 +78,4 @@ public class Square implements Shape{
 	public ShapeType getType() {
 		return type;
 	}
-
 }

@@ -1,55 +1,28 @@
-package graphicsscreen;
-public class Point {
-
-	/* initializing max coordinates of the rectangle screen */
-	public final int MAX_X_COORDINATE = 500;
-	public final int MAX_Y_COORDINATE = 500;
-
-	/* coordinates of point */
-	private int xCoordinate;
-	private int yCoordinate;
-
-	/**
-	 * Constructor to initialize point variables
-	 * 
-	 * @param xCoordinate
-	 * @param yCoordinate
-	 */
-	public Point(int xCoordinate, int yCoordinate) {
-		this.xCoordinate = xCoordinate;
-		this.yCoordinate = xCoordinate;
+public class Point{
+	private int x;
+	private int y;
+	
+	private final int xmax = 1000;
+	private final int ymax = 1000;
+	
+	public Point(int xCoOrd, int yCoOrd) {
+		x = xCoOrd;
+		y = yCoOrd;
 	}
-
-	/**
-	 * 
-	 * @return value of X coordinate
-	 */
-	public int getXCoordinate() {
-		return xCoordinate;
+	
+	public int getX() {
+		return x;
 	}
-
-	/**
-	 * 
-	 * @return value of Y coordinate
-	 */
-	public int getYCoordinate() {
-		return yCoordinate;
+	
+	public int getY() {
+		return y;
 	}
-
-	/**
-	 * 
-	 * @return value of maximum value of X coordinate
-	 */
-	public int getMAX_X_Coordinate() {
-		return MAX_X_COORDINATE;
+	
+	public int getXMax() {
+		return xmax;
 	}
-
-	/**
-	 * 
-	 * @return value of maximum value of Y coordinate
-	 */
-	public int getMAX_Y_Coordinate() {
-		return MAX_Y_COORDINATE;
+	
+	public int getYMax() {
+		return ymax;
 	}
-
 }

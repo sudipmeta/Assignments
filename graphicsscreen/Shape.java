@@ -1,20 +1,15 @@
-package graphicsscreen;
-public interface Shape {
+enum ShapeType{
+	Square,
+	Rectangle,
+	Circle,
+	Triangle;
+}
 
-	public double getArea();
-
-	public double getPerimeter();
-
-	public String getOrigin();
-
-	public ShapeType getType();
-
-	public boolean isPointEnclosed(Point point);
-
-	public String getUniqueId();
-	
-	
-	public enum ShapeType {
-		RECTANGLE, CIRCLE, SQUARE, TRIANGLE;
-	}
+interface Shape{
+	 public double getArea();
+	 public double getPerimeter();
+	 public String getOrigin();
+	 public boolean isPointEnclosed(Point pt);
+	 public ShapeType getType();
+	 public int getID();
 }
